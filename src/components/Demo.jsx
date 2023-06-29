@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { copy, linkIcon, loader, tick } from "../assets";
+import { copy, clear, linkIcon, loader, tick } from "../assets";
 import { useLazyGetSummaryQuery } from "../services/article";
 
 const Demo = () => {
@@ -48,20 +48,21 @@ const Demo = () => {
   return (
     <section className="mt-6 w-full max-w-4xl">
       {/* Search */}
-      <div className="flex flex-col m-auto w-full gap-2 max-w-xl">
+      <div className="flex flex-col m-auto w-full gap-2 max-w-2xl">
+        <div className="flex gap-1">
         <form
-          className="relative flex justify-center items-center"
+          className="relative flex flex-row w-full justify-center items-center"
           action=""
           onSubmit={handleSubmit}
         >
           <img
             src={linkIcon}
             alt="link"
-            className="absolute left-0 my-2 ml-3 w-5"
+            className="absolute invert left-0 my-2 ml-3 w-5"
           />
           <input
             type="url"
-            placeholder="Enter a URL"
+            placeholder="Enter Your Article URL"
             value={article.url}
             onChange={(e) => {
               setArticle({ ...article, url: e.target.value });
@@ -71,32 +72,42 @@ const Demo = () => {
           />
           <button
             type="submit"
-            className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700"
+            className="submit_btn peer-focus:border-green-600 peer-focus:text-gray-100"
           >
             {" "}
             &#9889;{" "}
           </button>
         </form>
+        <button
+          type="button"
+          onClick={() => localStorage.clear()}
+          className="del_btn"
+          title="Clear Cache"
+        >
+          <img src={clear} alt="clear-icon" />
+        </button>
+        </div>
+        
 
         {/* Browse URL History */}
         <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
           {allArticles.map((item, index) => (
-            <div
-              key={`link-${index}`}
-              onClick={() => setArticle(item)}
-              className="link_card"
-            >
-              <div className="copy_btn" onClick={() => handleCopy(item.url)}>
-                <img
-                  src={copied === item.url ? tick : copy}
-                  className="w-[40%] h-[40%] object-contain"
-                  alt="icon"
-                />
+              <div
+                key={`link-${index}`}
+                onClick={() => setArticle(item)}
+                className="link_card"
+              >
+                <div className="copy_btn" onClick={() => handleCopy(item.url)}>
+                  <img
+                    src={copied === item.url ? tick : copy}
+                    className="w-[40%] h-[40%] invert object-contain"
+                    alt="icon"
+                  />
+                </div>
+                <p className="flex-1 font-kanit text-blue-400 font-normal text-sm truncate">
+                  {item.url}
+                </p>
               </div>
-              <p className="flex-1 font-satoshi text-blue-700 font-medium text-sm truncate">
-                {item.url}
-              </p>
-            </div>
           ))}
         </div>
       </div>
@@ -107,18 +118,18 @@ const Demo = () => {
         ) : error ? (
           <p className="font-inter font-bold text-black text-center">
             Well, that was not supposed to happen... <br />
-            <span className="font-satoshi font-normal text-gray-700">
+            <span className="font-kanit font-normal text-gray-700">
               {error?.data?.error}
             </span>
           </p>
         ) : (
           article.summary && (
             <div className="flex flex-col gap-3">
-              <h2 className="font-satoshi font-bold text-gray-600 text-xl">
-                Article <span className="blue_gradient">Summary</span>
+              <h2 className="font-kanit font-bold text-3xl">
+                <span className="blue_gradient">Summary</span>
               </h2>
               <div className="summary_box">
-                <p className="font-inter font-medium text-sm text-gray-700 tracking-wider leading-loose">
+                <p className="font-inter font-medium text-sm text-gray-200 tracking-wider leading-loose">
                   {article.summary}
                 </p>
               </div>
