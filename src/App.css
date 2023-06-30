@@ -64,16 +64,36 @@
   .main {
     padding: 0;
   }
+
+  .summary_box p {
+    @apply text-xs tracking-wide;
+  }
+
+  .footer-comp { 
+    padding: 1px !important;
+    width: 100% !important;
+    flex-direction: column;
+  }
+  .footer-copyright h3 {
+    font-size: 1rem !important;
+  }
+  .footer-social { 
+    font-size: 1rem !important;
+  }
 }
 
 /* Tailwind Styles */
+
+button {
+  @apply transition-all ease-in-out
+}
 
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
 .black_btn {
-  @apply transition-all rounded-lg font-inter font-medium border-none outline-none bg-green-600 py-1.5 px-5 text-sm text-gray-100 hover:bg-green-400 hover:text-gray-900;
+  @apply transition-all rounded-lg font-inter font-medium border-2 border-green-600 outline-none py-1.5 px-5 text-sm text-gray-100 hover:bg-green-600 hover:text-gray-100 hover:translate-y-px;
 }
 
 .del_btn {
@@ -81,7 +101,7 @@
 }
 
 .del_btn img {
-  @apply transition-all w-8 brightness-100 hover:brightness-90
+  @apply transition-all w-8 brightness-100 hover:brightness-90;
 }
 
 .head_text {
@@ -117,7 +137,24 @@
 }
 
 .summary_box {
-  @apply rounded-xl border border-gray-400 bg-white/5 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4;
+  @apply rounded-xl border border-gray-400 bg-white/5 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4 mb-20;
+}
+
+.footer-comp {
+  @apply fixed bottom-0 border-t-2 border-gray-500 rounded-t-xl flex justify-evenly items-center w-3/4 p-3 backdrop-blur shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.01)];
+}
+
+
+.footer-copyright h3 {
+  @apply text-gray-300 text-xl font-kanit font-light;
+}
+
+.footer-social {
+  @apply flex items-center text-gray-300 text-xl font-kanit font-light;
+}
+
+.footer-social i {
+  @apply ml-3 text-xl bg-gradient-to-r from-green-300 via-green-400 to-green-600 bg-clip-text text-transparent;
 }
 
 

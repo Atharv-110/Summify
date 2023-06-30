@@ -50,64 +50,63 @@ const Demo = () => {
       {/* Search */}
       <div className="flex flex-col m-auto w-full gap-2 max-w-2xl">
         <div className="flex gap-1">
-        <form
-          className="relative flex flex-row w-full justify-center items-center"
-          action=""
-          onSubmit={handleSubmit}
-        >
-          <img
-            src={linkIcon}
-            alt="link"
-            className="absolute invert left-0 my-2 ml-3 w-5"
-          />
-          <input
-            type="url"
-            placeholder="Enter Your Article URL"
-            value={article.url}
-            onChange={(e) => {
-              setArticle({ ...article, url: e.target.value });
-            }}
-            required
-            className="url_input peer"
-          />
-          <button
-            type="submit"
-            className="submit_btn peer-focus:border-green-600 peer-focus:text-gray-100"
+          <form
+            className="relative flex flex-row w-full justify-center items-center"
+            action=""
+            onSubmit={handleSubmit}
           >
-            {" "}
-            &#9889;{" "}
+            <img
+              src={linkIcon}
+              alt="link"
+              className="absolute invert left-0 my-2 ml-3 w-5"
+            />
+            <input
+              type="url"
+              placeholder="Enter Your Article URL"
+              value={article.url}
+              onChange={(e) => {
+                setArticle({ ...article, url: e.target.value });
+              }}
+              required
+              className="url_input peer"
+            />
+            <button
+              type="submit"
+              className="submit_btn peer-focus:border-green-600 peer-focus:text-gray-100"
+            >
+              {" "}
+              &#9889;{" "}
+            </button>
+          </form>
+          <button
+            type="button"
+            onClick={() => localStorage.clear()}
+            className="del_btn"
+            title="Clear Cache"
+          >
+            <img src={clear} alt="clear-icon" />
           </button>
-        </form>
-        <button
-          type="button"
-          onClick={() => localStorage.clear()}
-          className="del_btn"
-          title="Clear Cache"
-        >
-          <img src={clear} alt="clear-icon" />
-        </button>
         </div>
-        
 
         {/* Browse URL History */}
         <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
           {allArticles.map((item, index) => (
-              <div
-                key={`link-${index}`}
-                onClick={() => setArticle(item)}
-                className="link_card"
-              >
-                <div className="copy_btn" onClick={() => handleCopy(item.url)}>
-                  <img
-                    src={copied === item.url ? tick : copy}
-                    className="w-[40%] h-[40%] invert object-contain"
-                    alt="icon"
-                  />
-                </div>
-                <p className="flex-1 font-kanit text-blue-400 font-normal text-sm truncate">
-                  {item.url}
-                </p>
+            <div
+              key={`link-${index}`}
+              onClick={() => setArticle(item)}
+              className="link_card"
+            >
+              <div className="copy_btn" onClick={() => handleCopy(item.url)}>
+                <img
+                  src={copied === item.url ? tick : copy}
+                  className="w-[40%] h-[40%] invert object-contain"
+                  alt="icon"
+                />
               </div>
+              <p className="flex-1 font-kanit text-blue-400 font-normal text-sm truncate">
+                {item.url}
+              </p>
+            </div>
           ))}
         </div>
       </div>
@@ -129,7 +128,7 @@ const Demo = () => {
                 <span className="blue_gradient">Summary</span>
               </h2>
               <div className="summary_box">
-                <p className="font-inter font-medium text-sm text-gray-200 tracking-wider leading-loose">
+                <p className="font-inter font-medium text-sm text-justify text-gray-200 tracking-wider leading-loose">
                   {article.summary}
                 </p>
               </div>

@@ -8,7 +8,7 @@ const Hero = () => {
         <img src={logo} className="w-44 object-contain" alt="logo" />
         <button
           type="button"
-          onClick={() => window.open("https://github.com/Atharv-110")}
+          onClick={() => window.open("https://github.com/Atharv-110/Summify")}
           className="black_btn"
         >
           GitHub
@@ -16,9 +16,7 @@ const Hero = () => {
       </nav>
       <h1 className="head_text">
         Unleash the Power of <br className="max-md:hidden" />{" "}
-        <span className="green_gradient font-extrabold ">
-          SUMMIFY
-        </span>
+        <span className="green_gradient font-extrabold ">SUMMIFY</span>
       </h1>
       <h2 className="desc">
         Amplify Your Reading Experience with GPT-4-Powered Summaries!
