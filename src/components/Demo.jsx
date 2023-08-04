@@ -49,9 +49,9 @@ const Demo = () => {
     <section className="mt-6 w-full max-w-4xl">
       {/* Search */}
       <div className="flex flex-col m-auto w-full gap-2 max-w-2xl">
-        <div className="flex gap-1">
+        <div className="flex gap-2">
           <form
-            className="relative flex flex-row w-full justify-center items-center"
+            className="relative flex flex-row w-full justify-center items-cente"
             action=""
             onSubmit={handleSubmit}
           >
@@ -115,9 +115,9 @@ const Demo = () => {
         {isFetching ? (
           <img src={loader} className="w-20 h-20 object-contain" alt="loader" />
         ) : error ? (
-          <p className="font-inter font-bold text-black text-center">
+          <p className="font-inter font-bold text-gray-400 text-center">
             Well, that was not supposed to happen... <br />
-            <span className="font-kanit font-normal text-gray-700">
+            <span className="font-kanit font-normal text-gray-500">
               {error?.data?.error}
             </span>
           </p>
